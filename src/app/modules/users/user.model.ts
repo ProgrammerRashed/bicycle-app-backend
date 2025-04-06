@@ -55,14 +55,6 @@ userSchema.statics.isUserExistsByCustomId = async function (email: string) {
   return await User.findOne({ email }).select('+password');
 };
 
-// userSchema.set('toJSON', {
-//   transform: (doc, ret) => {
-//     delete ret.password;
-//     delete ret.role;
-//     delete ret.isBlocked;
-//     return ret;
-//   },
-// });
 
 userSchema.statics.isPasswordMatched = async function (
   plainTextPassword,

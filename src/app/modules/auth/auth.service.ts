@@ -6,6 +6,7 @@ import config from '../../config';
 import AppError from '../../errors/AppError';
 import { JwtPayload } from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { TUser } from '../users/user.interface';
 
 const loginUser = async (payload: TLoginUser) => {
   // checking if the user is exist
@@ -42,6 +43,12 @@ const loginUser = async (payload: TLoginUser) => {
   return {
     accessToken,
   };
+};
+
+const createUserIntoDB = async (payload: TUser) => {
+  const result = await User.create(payload);
+
+  return result;
 };
 
 const changePassword = async (
@@ -88,6 +95,7 @@ const changePassword = async (
 };
 
 export const AuthServices = {
+  createUserIntoDB,
   loginUser,
   changePassword,
 };

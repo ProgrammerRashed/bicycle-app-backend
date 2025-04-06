@@ -2,11 +2,6 @@ import AppError from '../../errors/AppError';
 import { TUser } from './user.interface';
 import { User } from './user.model';
 
-const createUserIntoDB = async (payload: TUser) => {
-  const result = await User.create(payload);
-
-  return result;
-};
 
 const getalluserintodb = async () => {
   const result = await User.find();
@@ -38,7 +33,6 @@ const DeleteuserIntoDb = async (orderId: string) => {
   }
 };
 export const userServices = {
-  createUserIntoDB,
   UpdateuserIntoDb,
   getalluserintodb,
   DeleteuserIntoDb,
