@@ -6,7 +6,10 @@ import { TUser, UserModel } from './user.interface';
 
 const userSchema = new Schema<TUser, UserModel>(
   {
-    name: {
+    firstName: {
+      type: String,
+    },
+    lastName: {
       type: String,
     },
     email: {
@@ -23,10 +26,6 @@ const userSchema = new Schema<TUser, UserModel>(
       type: String,
       enum: ['user', 'admin'],
       default: 'user',
-    },
-    isBlocked: {
-      type: Boolean,
-      default: false,
     },
   },
   {

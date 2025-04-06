@@ -17,11 +17,8 @@ const loginUser = async (payload: TLoginUser) => {
   }
   // checking if the user is already deleted
 
-  const isBlocked = user?.isBlocked;
 
-  if (isBlocked) {
-    throw new AppError(httpStatus.FORBIDDEN, 'This user is blocked !');
-  }
+
 
   if (!(await User.isPasswordMatched(payload?.password, user?.password)))
     throw new AppError(401, 'Invalid credentials');
@@ -31,7 +28,7 @@ const loginUser = async (payload: TLoginUser) => {
   const jwtPayload = {
     email: user.email,
     role: user.role,
-    name: user.name,
+    name: user.firstName + ' ' + user.lastName,
   };
 
   const accessToken = createToken(
@@ -62,13 +59,7 @@ const changePassword = async (
     throw new AppError(httpStatus.NOT_FOUND, 'This user is not found !');
   }
 
-  // checking if the user is blocked
 
-  const userStatus = user?.isBlocked;
-
-  if (userStatus) {
-    throw new AppError(httpStatus.FORBIDDEN, 'This user is blocked ! !');
-  }
 
   //checking if the password is correct
 
