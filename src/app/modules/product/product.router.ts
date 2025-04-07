@@ -7,13 +7,13 @@ import auth from '../../middlewares/auth';
 const router = express.Router();
 
 router.post(
-  '/add-product',
+  '/product',
   auth('admin'),
   validationRequest(productValidationSchema.CreateProductValidationSchema),
   productController.createProduct,
 );
 
-router.get('/allproducts', productController.getallproduct);
+router.get('/products', productController.getallproduct);
 router.get('/product/:id', productController.getSingleProduct);
 
 router.put(
