@@ -19,7 +19,7 @@ router.post(
   AuthController.createUser,
 );
 router.post(
-  '/change-password',
+  '/auth/change-password',
   auth('user', 'admin'),
   AuthController.changePassword,
 );

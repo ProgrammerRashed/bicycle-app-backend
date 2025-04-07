@@ -16,16 +16,12 @@ const loginUser = async (payload: TLoginUser) => {
     throw new AppError(httpStatus.NOT_FOUND, 'This user is not found !');
   }
   // checking if the user is already deleted
-
-
-
-
   if (!(await User.isPasswordMatched(payload?.password, user?.password)))
     throw new AppError(401, 'Invalid credentials');
 
   //create token and sent to the  client
-
   const jwtPayload = {
+    userId: user._id as string,
     email: user.email,
     role: user.role,
     name: user.firstName + ' ' + user.lastName,
@@ -50,20 +46,16 @@ const createUserIntoDB = async (payload: TUser) => {
 
 const changePassword = async (
   userData: JwtPayload,
-  payload: { oldPassword: string; newPassword: string },
+  payload: { currentPassword: string; newPassword: string },
 ) => {
   // checking if the user is exist
   const user = await User.isUserExistsByCustomId(userData.email);
-
   if (!user) {
-    throw new AppError(httpStatus.NOT_FOUND, 'This user is not found !');
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found !');
   }
 
-
-
   //checking if the password is correct
-
-  if (!(await User.isPasswordMatched(payload.oldPassword, user?.password)))
+  if (!(await User.isPasswordMatched(payload.currentPassword, user?.password)))
     throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
 
   //hash new password
@@ -72,14 +64,9 @@ const changePassword = async (
     Number(config.bcrypt_salt_rounds),
   );
 
-  await User.findOneAndUpdate(
-    {
-      id: userData.userId,
-      role: userData.role,
-    },
-    {
-      password: newHashedPassword,
-    },
+  const result = await User.findOneAndUpdate(
+    { email: userData.email },
+    { password: newHashedPassword }
   );
 
   return null;
