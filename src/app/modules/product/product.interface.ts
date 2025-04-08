@@ -7,6 +7,7 @@ export type TProduct = {
     stock: number;
     model: string;
     quantity: number;
+    speacial_category: string[];
     image_gallery: string[];
     spacifications: string[];
     reviews: number;
