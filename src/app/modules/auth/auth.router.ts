@@ -20,7 +20,7 @@ router.post(
 );
 router.post(
   '/auth/change-password',
-  auth('user', 'admin'),
+  auth('customer', 'admin'),
   AuthController.changePassword,
 );
 

@@ -9,7 +9,7 @@ export interface TUser {
   lastName: string;
   email: string;
   password: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'customer';
 }
 
 export interface UserModel extends Model<TUser> {

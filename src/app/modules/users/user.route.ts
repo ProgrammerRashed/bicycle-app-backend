@@ -4,12 +4,12 @@ import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
-router.put('/user/:userId',  auth('admin', 'user'), userController.updateUser);
-router.delete('/user/:userId',  auth('admin', 'user'), userController.DeleteUser);
-router.get('/users',  auth('admin', 'user'), userController.getallUser);
+router.put('/user/:userId',  auth('admin', 'customer'), userController.updateUser);
+router.delete('/user/:userId',  auth('admin', 'customer'), userController.DeleteUser);
+router.get('/users',  auth('admin', 'customer'), userController.getallUser);
 router.get(
   '/users/:email',
-  auth('admin', 'user'),
+  auth('admin', 'customer'),
   userController.getsingleuser,
 );
 
