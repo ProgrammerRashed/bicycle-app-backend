@@ -8,7 +8,6 @@ const AddOrderDataintoDb = async (payload: TOrderData) => {
   const quantity = payload.quantity;
 
   const product = await ProductModel.findOne({ _id: productid });
-
   if (!product) {
     throw new AppError(404, 'Product is not available');
   }

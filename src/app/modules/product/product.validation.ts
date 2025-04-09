@@ -12,7 +12,14 @@ const CreateProductValidationSchema = z.object({
     quantity: z.number().int().min(0),
     speacial_category: z.array(z.string()),
     image_gallery: z.array(z.string()),
-    spacifications: z.array(z.string()),
+    in_stock: z.boolean().default(true),
+    spacifications: z.array(
+      z.object({
+        name: z.string(),
+        value: z.string(),
+      })
+    ).optional(),
+    
     reviews: z.number().min(0),
     key_features: z.array(z.string()),
   }),
@@ -30,7 +37,13 @@ const UpdateProductValidationSchema = z.object({
     quantity: z.number().int().min(0).optional(),
     speacial_category: z.array(z.string()).optional(),
     image_gallery: z.array(z.string()).optional(),
-    spacifications: z.array(z.string()).optional(),
+    in_stock: z.boolean().default(true),
+    spacifications: z.array(
+      z.object({
+        name: z.string(),
+        value: z.string(),
+      })
+    ).optional(),
     reviews: z.number().min(0).optional(),
     key_features: z.array(z.string()).optional(),
   }),

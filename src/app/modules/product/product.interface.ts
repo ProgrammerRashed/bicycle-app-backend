@@ -1,3 +1,5 @@
+import { Specification } from "../../interface/types";
+
 export type TProduct = {
   name: string;
     description: string;
@@ -9,7 +11,8 @@ export type TProduct = {
     quantity: number;
     speacial_category: string[];
     image_gallery: string[];
-    spacifications: string[];
+    in_stock: boolean;
+    spacifications: Specification[];
     reviews: number;
     key_features: string[];
 };

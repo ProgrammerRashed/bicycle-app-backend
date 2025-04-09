@@ -8,3 +8,7 @@ export type TErrorSources = {
     errorSources: TErrorSources;
   };
   
+  export interface Specification {
+    name: string;
+    value: string;
+  }

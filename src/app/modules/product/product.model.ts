@@ -12,7 +12,16 @@ const Productschema = new Schema<TProduct>({
   quantity: { type: Number, required: true },
   speacial_category: { type: [String], required: true },
   image_gallery: { type: [String], required: true },
-  spacifications: { type: [String], required: true },
+  in_stock: { type: Boolean, required: true },
+  spacifications: {
+    type: [
+      {
+        name: { type: String, required: false },
+        value: { type: String, required: false },
+      }
+    ],
+    required: false,
+  },
   reviews: { type: Number, required: true },
   key_features: { type: [String], required: true }
 });
