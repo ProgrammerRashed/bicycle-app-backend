@@ -26,6 +26,12 @@ const getallProductintoDb = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const getAllProductBrandsFromDb = async (query: Record<string, unknown>) => {
+  const result = await ProductModel.find(query, { brand: 1, _id: 0 });
+  return result;
+};
+
+
 const UpdateProductIntoDb = async (
   payload: Partial<TProduct>,
   productId: string,
@@ -54,4 +60,5 @@ export const productServices = {
   DeleteProductIntoDb,
   getallProductintoDb,
   getsingleIntoDb,
+  getAllProductBrandsFromDb
 };

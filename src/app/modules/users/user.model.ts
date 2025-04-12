@@ -12,6 +12,9 @@ const userSchema = new Schema<TUser, UserModel>(
     lastName: {
       type: String,
     },
+    status: {
+      type: String,
+    },
     email: {
       type: String,
       required: true,

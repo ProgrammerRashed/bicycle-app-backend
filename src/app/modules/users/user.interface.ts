@@ -7,6 +7,7 @@ export interface TUser {
   userId: string;
   firstName: string;
   lastName: string;
+  status: string;
   email: string;
   password: string;
   role: 'admin' | 'customer';
@@ -14,7 +15,6 @@ export interface TUser {
 
 export interface UserModel extends Model<TUser> {
   isUserExistsByCustomId(id: string): Promise<TUser>;
-
   isPasswordMatched(
     plainTextPassword: string,
     hashedPassword: string,

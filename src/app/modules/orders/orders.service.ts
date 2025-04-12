@@ -12,11 +12,11 @@ const AddOrderDataintoDb = async (payload: TOrderData) => {
     throw new AppError(404, 'Product is not available');
   }
 
-  if (product.quantity < quantity) {
+  if (product.stock < quantity) {
     throw new AppError(400, 'Not enough stock available');
   }
 
-  product.quantity -= quantity;
+  product.stock -= quantity;
 
   await product.save();
 

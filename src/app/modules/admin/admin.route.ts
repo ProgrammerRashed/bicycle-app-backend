@@ -1,15 +1,9 @@
 import express from 'express';
-import { BlockController } from './admin.controller';
+import { AdminStaticsControler } from './admin.controller';
 import auth from '../../middlewares/auth';
-
 const router = express.Router();
 
-router.patch(
-  '/admin/users/:userId/block',
-  auth('admin'),
-  BlockController.BlockUser,
-);
 
-router.get('/admin/data-statics', BlockController.getAllData);
+router.get('/admin/statics',  auth('admin'), AdminStaticsControler.getAllStatics);
 
 export const AdminRouter = router;

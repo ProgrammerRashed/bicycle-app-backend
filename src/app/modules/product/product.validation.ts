@@ -9,11 +9,10 @@ const CreateProductValidationSchema = z.object({
     category: z.string(),
     stock: z.number().int().min(0),
     model: z.string(),
-    quantity: z.number().int().min(0),
-    speacial_category: z.array(z.string()),
+    special_category: z.array(z.string()),
     image_gallery: z.array(z.string()),
     in_stock: z.boolean().default(true),
-    spacifications: z.array(
+    specifications: z.array(
       z.object({
         name: z.string(),
         value: z.string(),
@@ -34,11 +33,10 @@ const UpdateProductValidationSchema = z.object({
     category: z.string().optional(),
     stock: z.number().int().min(0).optional(),
     model: z.string().optional(),
-    quantity: z.number().int().min(0).optional(),
-    speacial_category: z.array(z.string()).optional(),
+    special_category: z.array(z.string()).optional(),
     image_gallery: z.array(z.string()).optional(),
     in_stock: z.boolean().default(true),
-    spacifications: z.array(
+    specifications: z.array(
       z.object({
         name: z.string(),
         value: z.string(),

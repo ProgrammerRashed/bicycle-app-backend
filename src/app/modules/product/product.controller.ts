@@ -56,6 +56,17 @@ const getallproduct = catchAsync(async (req, res) => {
   });
 });
 
+const getproductsbrands = catchAsync(async (req, res) => {
+  const query = req.query;
+  const result = await productServices.getAllProductBrandsFromDb(query);
+  SendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'All brands fetched successfully',
+    data: result,
+  });
+});
+
 const DeleteProduct = catchAsync(async (req, res) => {
   const { productId } = req.params;
   await productServices.DeleteProductIntoDb(productId);
@@ -73,4 +84,5 @@ export const productController = {
   DeleteProduct,
   getSingleProduct,
   getallproduct,
+  getproductsbrands
 };

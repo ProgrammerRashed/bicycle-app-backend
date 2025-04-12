@@ -6,6 +6,8 @@ const createUserValidationSchema = z.object({
     lastName: z.string(),
     email: z.string().email(),
     password: z.string(),
+    status: z.enum(['active', 'deactivate']).default('deactivate'),
+    role: z.enum(['customer', 'admin']).default('customer'),
   }),
 });
 const UpdateUserValidationSchema = z.object({
@@ -14,6 +16,7 @@ const UpdateUserValidationSchema = z.object({
     lastName: z.string().optional(),
     email: z.string().email().optional(),
     password: z.string().optional(),
+    status: z.enum(['active', 'deactivate']).optional().default('deactivate'),
     role: z.enum(['customer', 'admin']).optional().default('customer'),
   }),
 });

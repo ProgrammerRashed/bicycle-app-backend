@@ -9,11 +9,10 @@ const Productschema = new Schema<TProduct>({
   category: { type: String, required: true },
   stock: { type: Number, required: true },
   model: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  speacial_category: { type: [String], required: true },
+special_category: { type: [String], required: true },
   image_gallery: { type: [String], required: true },
   in_stock: { type: Boolean, required: true },
-  spacifications: {
+  specifications: {
     type: [
       {
         name: { type: String, required: false },
