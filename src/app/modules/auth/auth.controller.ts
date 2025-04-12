@@ -19,7 +19,6 @@ const loginUser = catchAsync(async (req, res) => {
 
 const createUser = catchAsync(async (req, res) => {
   const userData = req.body;
-  console.log("backend data", userData);
   const result = await AuthServices.createUserIntoDB(userData);
 
   SendResponse(res, {
